@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -29,7 +30,7 @@ namespace AddProduct.Core.Model
                 if (id != value)
                 {
                     id = value;
-                    OnPropertyChanged(nameof(Id));
+                    OnPropertyChanged();
                 }
             }
         }
@@ -43,7 +44,7 @@ namespace AddProduct.Core.Model
                 if (name != value)
                 {
                     name = value;
-                    OnPropertyChanged(nameof(Name));
+                    OnPropertyChanged();
                 }
             }
         }
@@ -57,7 +58,7 @@ namespace AddProduct.Core.Model
                 if (comments != value)
                 {
                     comments = value;
-                    OnPropertyChanged(nameof(Comments));
+                    OnPropertyChanged();
                 }
             }
         }
@@ -71,7 +72,7 @@ namespace AddProduct.Core.Model
                 if (costPrice != value)
                 {
                     costPrice = value;
-                    OnPropertyChanged(nameof(CostPrice));
+                    OnPropertyChanged();
                 }
             }
         }
@@ -85,7 +86,7 @@ namespace AddProduct.Core.Model
                 if (salePrice != value)
                 {
                     salePrice = value;
-                    OnPropertyChanged(nameof(SalePrice));
+                    OnPropertyChanged();
                 }
             }
         }
@@ -99,16 +100,18 @@ namespace AddProduct.Core.Model
                 if (stock != value)
                 {
                     stock = value;
-                    OnPropertyChanged(nameof(Stock));
+                    OnPropertyChanged();
                 }
             }
         }
 
-        public event PropertyChangedEventHandler PropertyChanged;
+        public event PropertyChangedEventHandler? PropertyChanged;
 
-        private void OnPropertyChanged(string propertyName)
+        private void OnPropertyChanged([CallerMemberName] string propertyName = "")
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
+
+      
     }
 }

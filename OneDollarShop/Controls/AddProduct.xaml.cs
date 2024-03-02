@@ -20,7 +20,8 @@ using System.Windows.Shapes;
 using System.Xml.Linq;
 
 
-namespace OneDollarShop
+
+namespace OneDollarShop.Controls
 {
     /// <summary>
     /// Interaction logic for AddProduct.xaml
@@ -78,12 +79,15 @@ namespace OneDollarShop
                    
                 }
                 dbContext.SaveChanges();
-                var mainWindow = Application.Current.MainWindow as MainWindow;
-                mainWindow?.RefreshDataGrid();
+                //var mainWindow = Application.Current.MainWindow as ProductMainView;
+                //mainWindow?.RefreshDataGrid();
+                ProductMainView productMainView = new ProductMainView();
+                productMainView.RefreshDataGrid();
+            
 
                 this.Close();
             }
-
+             
         }
 
         

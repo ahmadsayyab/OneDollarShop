@@ -33,10 +33,4 @@
     <Resource Include="Assets\upload.png" />
   </ItemGroup>
 
-  <ItemGroup>
-    <None Update="AddProduct.Core">
-      <Generator>MSBuild:Compile</Generator>
-    </None>
-  </ItemGroup>
-
 </Project>
