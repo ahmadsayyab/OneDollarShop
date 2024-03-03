@@ -17,5 +17,8 @@
             <local:ProductMainView />
 
         </TabItem>
+        <TabItem Header="POS">
+            <local:PosMainView />
+        </TabItem>
     </TabControl>
 </Window>
