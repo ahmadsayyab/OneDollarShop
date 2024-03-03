@@ -86,10 +86,10 @@ namespace OneDollarShop.Controls
         private void txtSearchProduct_TextChanged(object sender, TextChangedEventArgs e)
         {
             string searchTerm = txtSearchProduct.Text.ToLower();
-            var products = context.Products;
+            //var products = context.Products;
 
 
-            var searchProducts = products.Where(p =>
+            var searchProducts = Products.Where(p =>
                 p.Name.ToLower().Contains(searchTerm) ||
                 p.Comments.ToLower().Contains(searchTerm)
             ).ToList();

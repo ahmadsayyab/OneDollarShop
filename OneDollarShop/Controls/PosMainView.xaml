@@ -31,12 +31,38 @@
         <TextBox
             x:Name="txtSearchProduct"
             Padding="4,0"
-            VerticalContentAlignment="Center" />
+            VerticalContentAlignment="Center"
+            TextChanged="txtSearchProduct_TextChanged"/>
         <ListView
             x:Name="lvProductsList"
             Grid.Row="1"
             Grid.RowSpan="2"
-            Background="AliceBlue" />
+            VerticalAlignment="Top"
+            Background="AliceBlue"
+            ScrollViewer.HorizontalScrollBarVisibility="Hidden">
+            <ItemsControl.ItemsPanel>
+
+                <ItemsPanelTemplate>
+                    <WrapPanel Width="{Binding ActualWidth, ElementName=lvProductsList}" Orientation="Horizontal" />
+                </ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Vertical">
+                        <Image
+                            Width="100"
+                            Height="55"
+                            HorizontalAlignment="Stretch"
+                            VerticalAlignment="Top"
+                            Source="/OneDollarShop;component/Assets/oneDollarItem.jpeg" />
+                        <TextBlock
+                            Background="Green"
+                            Foreground="White"
+                            Text="{Binding Name}" />
+                    </StackPanel>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
         <DataGrid
             x:Name="dgSellDetail"
             Grid.RowSpan="2"

@@ -12,6 +12,7 @@
     <None Remove="Assets\addProduct.jpg" />
     <None Remove="Assets\delete.png" />
     <None Remove="Assets\edit.png" />
+    <None Remove="Assets\oneDollarItem.jpeg" />
     <None Remove="Assets\upload.png" />
   </ItemGroup>
 
@@ -30,6 +31,7 @@
     <Resource Include="Assets\addProduct.jpg" />
     <Resource Include="Assets\delete.png" />
     <Resource Include="Assets\edit.png" />
+    <Resource Include="Assets\oneDollarItem.jpeg" />
     <Resource Include="Assets\upload.png" />
   </ItemGroup>
 
