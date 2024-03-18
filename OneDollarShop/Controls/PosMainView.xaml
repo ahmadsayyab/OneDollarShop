@@ -10,13 +10,23 @@
     mc:Ignorable="d">
 
     <UserControl.Resources>
+
         <Style x:Key="btnCloseOrProcessInvoice" TargetType="Button">
             <Setter Property="Background" Value="Green" />
             <Setter Property="Foreground" Value="white" />
             <Setter Property="Padding" Value="5" />
             <Setter Property="FontWeight" Value="Bold" />
         </Style>
+        <Style x:Key="btnPlusStyle" TargetType="Button">
+
+            <Setter Property="Background" Value="Transparent" />
+            <Setter Property="BorderBrush" Value="Transparent" />
+            <Setter Property="BorderThickness" Value="0" />
+
+        </Style>
+
     </UserControl.Resources>
+
     <Grid Margin="0,15,0,3">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*" />
@@ -32,7 +42,7 @@
             x:Name="txtSearchProduct"
             Padding="4,0"
             VerticalContentAlignment="Center"
-            TextChanged="txtSearchProduct_TextChanged"/>
+            TextChanged="txtSearchProduct_TextChanged" />
         <ListView
             x:Name="lvProductsList"
             Grid.Row="1"
@@ -49,20 +59,44 @@
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <StackPanel Orientation="Vertical">
-                        <Image
-                            Width="100"
-                            Height="55"
-                            HorizontalAlignment="Stretch"
-                            VerticalAlignment="Top"
-                            Source="/OneDollarShop;component/Assets/oneDollarItem.jpeg" />
+                        <Grid>
+                            <Image
+                                Width="100"
+                                Height="55"
+                                MouseEnter="Image_MouseEnter"
+                                MouseLeave="Image_MouseLeave"
+                                Source="/OneDollarShop;component/Assets/oneDollarItem.jpeg"
+                                Tag="{Binding ElementName=btnPlus, Path=Visibility}" />
+                            <Button
+                                x:Name="btnPlus"
+                                Width="40"
+                                Height="40"
+                                Click="btnPlus_Click"
+                                Style="{StaticResource btnPlusStyle}">
+                                <Button.Template>
+                                    <ControlTemplate>
+                                        <TextBlock
+                                            HorizontalAlignment="Center"
+                                            VerticalAlignment="Center"
+                                            FontSize="50"
+                                            FontWeight="Bold"
+                                            Foreground="Black"
+                                            Text="+" />
+                                    </ControlTemplate>
+                                </Button.Template>
+                            </Button>
+                        </Grid>
                         <TextBlock
                             Background="Green"
                             Foreground="White"
                             Text="{Binding Name}" />
                     </StackPanel>
                 </DataTemplate>
+
             </ListView.ItemTemplate>
         </ListView>
+
+
         <DataGrid
             x:Name="dgSellDetail"
             Grid.RowSpan="2"
@@ -74,10 +108,10 @@
             ColumnWidth="*"
             IsReadOnly="True">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Name" />
-                <DataGridTextColumn Header="Quantity" />
-                <DataGridTextColumn Header="Price" />
-                <DataGridTextColumn Header="Grand Total" />
+                <DataGridTextColumn Binding="{Binding Name}" Header="Name" />
+                <DataGridTextColumn Binding="{Binding Quantity}" Header="Quantity" />
+                <DataGridTextColumn Binding="{Binding SalePrice}" Header="Price" />
+                <DataGridTextColumn Binding="{Binding TotalPrice}" Header="Total Price" />
                 <DataGridTemplateColumn Width="Auto" Header="Actions">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>

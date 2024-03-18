@@ -24,7 +24,7 @@ namespace OneDollarShop.Controls
     /// </summary>
     public partial class ProductMainView : UserControl
     {
-        OneDollarContext context = new OneDollarContext();
+        OneDollarDbContext context = new OneDollarDbContext();
         AddProduct addProduct;
         public ObservableCollection<Product> Products { get; set; }
         
@@ -33,6 +33,7 @@ namespace OneDollarShop.Controls
             InitializeComponent();
             Products = new ObservableCollection<Product>();
             RefreshDataGrid();
+
         }
 
         private void btnAddProduct_Click(object sender, RoutedEventArgs e)
@@ -44,7 +45,7 @@ namespace OneDollarShop.Controls
         public void RefreshDataGrid()
         {
             Products.Clear();
-            using (var dbContext = new OneDollarContext())
+            using (var dbContext = new OneDollarDbContext())
             {
                 Products = new ObservableCollection<Product>(dbContext.Products.ToList());
             }
@@ -56,7 +57,7 @@ namespace OneDollarShop.Controls
         {
             if (sender is Button btn && btn.DataContext is Product editProduct)
             {
-                using (var dbContext = new OneDollarContext())
+                using (var dbContext = new OneDollarDbContext())
                 {
                     // Retrieve the product details from SQLite based on the ID
                     Product? productToEdit = dbContext.Products.FirstOrDefault(p => p.Id == editProduct.Id);

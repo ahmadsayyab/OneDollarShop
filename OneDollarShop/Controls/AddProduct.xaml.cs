@@ -48,11 +48,13 @@ namespace OneDollarShop.Controls
             txtSalePrice.Text = product.SalePrice.ToString();
             txtStock.Text = product.Stock.ToString();
         }
-       
+
+        public event EventHandler DataUpdated;
+
         private void btnSave_Click(object sender, RoutedEventArgs e)
         {
 
-            using (var dbContext = new OneDollarContext())
+            using (var dbContext = new OneDollarDbContext())
             {
                 Product? existingProduct = dbContext.Products.FirstOrDefault(p => p.Id == id);
 
@@ -79,13 +81,13 @@ namespace OneDollarShop.Controls
                    
                 }
                 dbContext.SaveChanges();
-                //var mainWindow = Application.Current.MainWindow as ProductMainView;
-                //mainWindow?.RefreshDataGrid();
-                ProductMainView productMainView = new ProductMainView();
-                productMainView.RefreshDataGrid();
-            
+
+                //ProductMainView productMainView = new ProductMainView();
+                //productMainView.RefreshDataGrid();
+
 
                 this.Close();
+               
             }
              
         }

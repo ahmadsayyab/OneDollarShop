@@ -105,6 +105,7 @@ namespace AddProduct.Core.Model
             }
         }
 
+    
         public event PropertyChangedEventHandler? PropertyChanged;
 
         private void OnPropertyChanged([CallerMemberName] string propertyName = "")

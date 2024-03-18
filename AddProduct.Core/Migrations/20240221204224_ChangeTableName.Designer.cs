@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace AddProduct.Core.Migrations
 {
-    [DbContext(typeof(OneDollarContext))]
+    [DbContext(typeof(OneDollarDbContext))]
     [Migration("20240221204224_ChangeTableName")]
     partial class ChangeTableName
     {

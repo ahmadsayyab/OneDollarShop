@@ -8,9 +8,9 @@ using System.Threading.Tasks;
 
 namespace AddProduct.Core.Contexts
 {
-    public class OneDollarContext : DbContext
+    public class OneDollarDbContext : DbContext
     {
-        public OneDollarContext()
+        public OneDollarDbContext()
         {
             Database.EnsureCreated();
         }
